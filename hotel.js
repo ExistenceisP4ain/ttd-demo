@@ -6,19 +6,28 @@ let pricelist = [
 ]
 
 function logPricelist(pricelist) {
+    /*
+    Vaš zadatak je napisati funkciju koja prima 
+    gore specificiran podatak te na konzolu, z
+    a potrebe logiranja, ispisuje istu u slijedećem formatu:
+    
+    Cijena : lista perioda na koje se primjenjuje 
+    
+    (sortirano od manje do veće cijene)
+    */
     pricelist.sort((a, b) => a.price - b.price)
 
-    let cout = ""
+    let print = ""
     let previous = {}
 
     pricelist.forEach(function (a) {
-        if (a.price == previous.price) cout += ' , '
-        else cout += '\n'
-        cout += ${a.price} : ${a.from} : ${a.to}
+        if (a.price == previous.price) print += ' , '
+        else print += '\n'
+        print += ${a.price} : ${a.from} : ${a.to}
         previous = a
     })
 
-    console.log(cout)
+    console.log(print)
 }
 
 logPricelist(pricelist)
