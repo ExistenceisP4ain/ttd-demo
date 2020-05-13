@@ -11,7 +11,7 @@ let pricelist = [
   // 39.0 : "2020-03-02 do 2020-05-15
   
   // Two different methods;
-  
+
   
   function logPricelist(pricelist) {
     let model = prepareData(pricelist)
