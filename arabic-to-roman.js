@@ -28,8 +28,6 @@ function arabicToRoman(num) {
     
     //izbaciti ovaj IF
     rest !== 0 ? roman = roman + arabicToRoman(rest) : roman ; 
-
-
    
     return roman;
 }
