@@ -14,9 +14,47 @@ TDD
 
 
 */
-function suggestionTool(currentText) {
-	//implementirati neku magiju
-	//vratiti array top 5 sugestija
+function suggestionTool(Tekst){
+    Tekst = Tekst.toLowerCase();
+    let rijeci = Tekst.split(" ");
+    
+    if(rijeci.length > 3 || Tekst.length==0) return []
+
+    let fs = require("fs");
+    let fajl = fs.readFileSync('long.txt','utf-8').toLowerCase().split(" ");
+
+    let allSuggestions = [];
+    let suggestionPriority = {};
+    let matchCounter = 0; 
+    for(let i=0; i<fajl.length; i++){
+        let fajlWord = fajl[i];
+        if(fajlWord == rijeci[matchCounter]) matchCounter++;
+        else matchCounter = 0;
+
+        if(matchCounter == rijeci.length && i+1 < fajl.length){
+            matchCounter = 0;
+            let suggestion = rijeci.join(" ");
+            let nextfajlRijec = fajl[i+1];
+            suggestion += " " + nextfajlRijec;
+
+            if(suggestion in suggestionPriority) suggestionPriority[suggestion]++;
+            else {
+                allSuggestions.push(suggestion);
+                suggestionPriority[suggestion] = 1;
+            }
+        }
+    }
+
+    let sortedSuggestions = allSuggestions.sort(function(first, second) {
+        return suggestionPriority[second] - suggestionPriority[first];
+    })
+    
+    let Rezultat = []
+    for(let i=0; i<sortedSuggestions.length; i++){
+        if(i==5) break;
+        Rezultat.push(sortedSuggestions[i]);
+    }
+    return Rezultat;
 }
 
 console.log(suggestionTool("I am"));
@@ -25,3 +63,4 @@ console.log(suggestionTool("I am"));
 //dakle suggestionTool("I am very") je legalno
 //ali suggestionTool("I am very hungry") nije
 //["I AM just", "I am often", "I am currently", "I am 90%"]
+
