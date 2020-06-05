@@ -9,15 +9,15 @@
 
     var mr = createArray(visina);
 
-    for (var m_sirina = 0; m_sirina < sirina; m_sirina++) {
-        for (var m_visina = 0; m_visina < visina; m_visina++) {
+    for (var matrica_sirina = 0; matrica_sirina < sirina; matrica_sirina++) {
+        for (var matrica_visina = 0; matrica_visina < visina; matrica_visina++) {
             var nasumicni_broj1 = Math.random();
             var nasumicni_broj2 = (nasumicni_broj1 * 2);
             var nasumicni_binarni_broj = Math.floor(nasumicni_broj2);
             if (nasumicni_binarni_broj === 1) {
-                matrica[m_sirina][m_visina] = 1;
+                matrica[matrica_sirina][matrica_visina] = 1;
             } else {
-                matrica[m_sirina][m_visina] = 0;
+                matrica[matrica_sirina][matrica_visina] = 0;
             }
         }
     }
@@ -31,12 +31,12 @@
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, 400, 400);
-        for (var m_sirina = 1; m_sirina < sirina; m_sirina++) {
-            for (var m_visina = 1; m_visina < y; m_visina++) {
+        for (var matrica_sirina = 1; matrica_sirina < sirina; matrica_sirina++) {
+            for (var matrica_visina = 1; matrica_visina < y; matrica_visina++) {
 
 
-                ctx.fillStyle = boje[matrica[m_sirina][m_visina]];
-                ctx.fillRect(m_sirina, m_visina, 1, 1);
+                ctx.fillStyle = boje[matrica[matrica_sirina][matrica_visina]];
+                ctx.fillRect(matrica_sirina, matrica_visina, 1, 1);
 
             }
         }
@@ -54,46 +54,46 @@
     }
 
     function Animacija() {
-        for (var m_sirina = 1; m_sirina < sirina - 1; m_sirina++) {
-            for (var m_visina = 1; m_visina < visina - 1; m_visina++) {
+        for (var matrica_sirina = 1; matrica_sirina < sirina - 1; matrica_sirina++) {
+            for (var matrica_visina = 1; matrica_visina < visina - 1; matrica_visina++) {
 
-                if (matrica[m_sirina][m_visina] === 0) {
-                    switch (matrica[m_sirina - 1][m_visina - 1] + matrica[m_sirina - 1][m_visina] + matrica[m_sirina - 1][m_visina + 1] + matrica[m_sirina][m_visina - 1] + matrica[m_sirina][m_visina + 1] + matrica[m_sirina + 1][m_visina - 1] + matrica[m_sirina + 1][m_visina] + matrica[m_sirina + 1][m_visina + 1]) {
+                if (matrica[matrica_sirina][matrica_visina] === 0) {
+                    switch (matrica[matrica_sirina - 1][matrica_visina - 1] + matrica[matrica_sirina - 1][matrica_visina] + matrica[matrica_sirina - 1][matrica_visina + 1] + matrica[matrica_sirina][matrica_visina - 1] + matrica[matrica_sirina][matrica_visina + 1] + matrica[matrica_sirina + 1][matrica_visina - 1] + matrica[matrica_sirina + 1][matrica_visina] + matrica[matrica_sirina + 1][matrica_visina + 1]) {
                         case 1:
                         case 2:
-                            mr[m_sirina][m_visina] = 0;
+                            mr[matrica_sirina][matrica_visina] = 0;
                             break;
                         case 3:
-                            mr[m_sirina][m_visina] = 1;
+                            mr[matrica_sirina][matrica_visina] = 1;
                             break;
                         case 4:
-                            mr[m_sirina][m_visina] = 1;
+                            mr[matrica_sirina][matrica_visina] = 1;
                         case 5:
-                            mr[m_sirina][m_visina] = !(mr[m_sirina][m_visina] | !mr[m_sirina][m_visina]);
+                            mr[matrica_sirina][matrica_visina] = !(mr[matrica_sirina][matrica_visina] | !mr[matrica_sirina][matrica_visina]);
                         default:
-                            mr[m_sirina][m_visina] = 0;
+                            mr[matrica_sirina][matrica_visina] = 0;
                     }
-                } else if (matrica[m_sirina][m_visina] === 1) {
-                    switch (matrica[m_sirina - 1][m_visina - 1] + matrica[m_sirina - 1][m_visina] + matrica[m_sirina - 1][m_visina + 1] + matrica[m_sirina][m_visina - 1] + matrica[m_sirina][m_visina + 1] + matrica[m_sirina + 1][m_visina - 1] + matrica[m_sirina + 1][m_visina] + matrica[m_sirina + 1][m_visina + 1]) {
+                } else if (matrica[matrica_sirina][matrica_visina] === 1) {
+                    switch (matrica[matrica_sirina - 1][matrica_visina - 1] + matrica[matrica_sirina - 1][matrica_visina] + matrica[matrica_sirina - 1][matrica_visina + 1] + matrica[matrica_sirina][matrica_visina - 1] + matrica[matrica_sirina][matrica_visina + 1] + matrica[matrica_sirina + 1][matrica_visina - 1] + matrica[matrica_sirina + 1][matrica_visina] + matrica[matrica_sirina + 1][matrica_visina + 1]) {
                         case 0:
                         case 1:
-                            mr[m_sirina][m_visina] = (mr[m_sirina][m_visina] | !mr[m_sirina][m_visina]);
+                            mr[matrica_sirina][matrica_visina] = (mr[matrica_sirina][matrica_visina] | !mr[matrica_sirina][matrica_visina]);
                             break;
                         case 2:
-                            mr[m_sirina][m_visina] = (mr[m_sirina][m_visina] | !mr[m_sirina][m_visina]);
+                            mr[matrica_sirina][matrica_visina] = (mr[matrica_sirina][matrica_visina] | !mr[matrica_sirina][matrica_visina]);
                         case 3:
-                            mr[m_sirina][m_visina] = 1;
+                            mr[matrica_sirina][matrica_visina] = 1;
                             break;
                         case 4:
                         case 5:
-                            mr[m_sirina][m_visina] = (mr[m_sirina][m_visina] & !mr[m_sirina][m_visina]);
+                            mr[matrica_sirina][matrica_visina] = (mr[matrica_sirina][matrica_visina] & !mr[matrica_sirina][matrica_visina]);
                         case 6:
                         case 7:
                         case 8:
-                            mr[m_sirina][m_visina] = 0;
+                            mr[matrica_sirina][matrica_visina] = 0;
                             break;
                         default:
-                            mr[m_sirina][m_visina] = 0;
+                            mr[matrica_sirina][matrica_visina] = 0;
 
                     }
 
@@ -101,9 +101,9 @@
             }
         }
 
-        for (var m_sirina = 0; m_sirina < sirina; m_sirina++) {
-            for (var m_visina = 0; m_visina < visina; m_visina++) {
-                matrica[m_sirina][m_visina] = mr[m_sirina][m_visina];
+        for (var matrica_sirina = 0; matrica_sirina < sirina; matrica_sirina++) {
+            for (var matrica_visina = 0; matrica_visina < visina; matrica_visina++) {
+                matrica[matrica_sirina][matrica_visina] = mr[matrica_sirina][matrica_visina];
 
             }
         }
